@@ -1,4 +1,4 @@
-package com.chrisbrown.sfgpetclinic;
+package com.chrisbrown.sfgpetclinic.model;
 
 import java.io.Serializable;
 

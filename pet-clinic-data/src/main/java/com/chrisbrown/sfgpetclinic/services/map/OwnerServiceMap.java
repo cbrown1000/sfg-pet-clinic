@@ -1,7 +1,5 @@
 package com.chrisbrown.sfgpetclinic.services.map;
 
-import java.util.Set;
-
 import com.chrisbrown.sfgpetclinic.model.Owner;
 import com.chrisbrown.sfgpetclinic.services.CrudService;
 

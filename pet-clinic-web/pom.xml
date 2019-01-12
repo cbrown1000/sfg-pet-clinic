@@ -17,6 +17,18 @@
 		<webjars-jquery.version>2.2.4</webjars-jquery.version>
 		<wro4j.version>1.8.0</wro4j.version>
 	</properties>
+		<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<skip>false</skip>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+	
 	<dependencies>
 		<dependency>
 			<groupId>com.chrisbrown</groupId>

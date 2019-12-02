@@ -1,10 +1,12 @@
 package com.chrisbrown.sfgpetclinic.model;
 
+import java.util.Set;
+
 public class Vet extends Person {
 
 	private Set<Speciality> specialities;
 	
-	public Set<Speciality> get Specialities() {
+	public Set<Speciality> getSpecialities() {
 		return this.specialities;
 	}
 	

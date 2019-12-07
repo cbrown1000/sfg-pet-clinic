@@ -1,9 +1,12 @@
 package com.chrisbrown.sfgpetclinic.bootstrap;
 
+import java.time.LocalDate;
+
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 import com.chrisbrown.sfgpetclinic.model.Owner;
+import com.chrisbrown.sfgpetclinic.model.Pet;
 import com.chrisbrown.sfgpetclinic.model.PetType;
 import com.chrisbrown.sfgpetclinic.model.Vet;
 import com.chrisbrown.sfgpetclinic.services.OwnerService;
@@ -35,17 +38,38 @@ public class DataLoader  implements CommandLineRunner{
 		PetType cat = new PetType();
 		cat.setName("Cat");
 		PetType savedCatPetType = petTypeService.save(cat);
+		System.out.println("Loading PetTypes....");
 
 		Owner owner1 = new Owner();
 		owner1.setFirstName("Michael");
 		owner1.setLastName("Weston");
+		owner1.setAddress("123 Brickerel");
+		owner1.setCity("Miami");
+		owner1.setTelephone("1234567890");
 		
+		Pet mikesPet = new Pet();
+		mikesPet.setPetType(savedDogPetType);
+		mikesPet.setOwner(owner1);
+		mikesPet.setBirthDate(LocalDate.now());
+		mikesPet.setName("Rosco");
+		
+		owner1.getPets().add(mikesPet);
 		ownerService.save(owner1);
 		
 		Owner owner2 = new Owner();
 		owner2.setFirstName("Fiona");
 		owner2.setLastName("Glenanne");
+		owner2.setAddress("123 Brickerel");
+		owner2.setCity("Miami");
+		owner2.setTelephone("1234567890");
 		
+		Pet fionasCat = new Pet();
+		fionasCat.setName("Just Cat");
+		fionasCat.setOwner(owner2);
+		fionasCat.setBirthDate(LocalDate.now());
+		fionasCat.setPetType(savedCatPetType);
+		
+		owner2.getPets().add(fionasCat);
 		ownerService.save(owner2);
 		
 		System.out.println("Loaded Owners....");

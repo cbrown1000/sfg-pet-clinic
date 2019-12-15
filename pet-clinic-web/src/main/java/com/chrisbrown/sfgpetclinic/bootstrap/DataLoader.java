@@ -8,9 +8,11 @@ import org.springframework.stereotype.Component;
 import com.chrisbrown.sfgpetclinic.model.Owner;
 import com.chrisbrown.sfgpetclinic.model.Pet;
 import com.chrisbrown.sfgpetclinic.model.PetType;
+import com.chrisbrown.sfgpetclinic.model.Specialty;
 import com.chrisbrown.sfgpetclinic.model.Vet;
 import com.chrisbrown.sfgpetclinic.services.OwnerService;
 import com.chrisbrown.sfgpetclinic.services.PetTypeService;
+import com.chrisbrown.sfgpetclinic.services.SpecialtyService;
 import com.chrisbrown.sfgpetclinic.services.VetService;
 import com.chrisbrown.sfgpetclinic.services.map.OwnerServiceMap;
 import com.chrisbrown.sfgpetclinic.services.map.VetServiceMap;
@@ -21,11 +23,13 @@ public class DataLoader  implements CommandLineRunner{
 	private final OwnerService ownerService;
 	private final VetService vetService;
 	private final PetTypeService petTypeService;
+	private final SpecialtyService specialtyService;
 	
-	public DataLoader(OwnerService ownerService, VetService vetService, PetTypeService petTypeService) {
+	public DataLoader(OwnerService ownerService, VetService vetService, PetTypeService petTypeService, SpecialtyService specialtyService) {
 		this.ownerService = ownerService;
 		this.vetService = vetService;
 		this.petTypeService = petTypeService;
+		this.specialtyService = specialtyService;
 	}
 
 	@Override
@@ -39,6 +43,15 @@ public class DataLoader  implements CommandLineRunner{
 		cat.setName("Cat");
 		PetType savedCatPetType = petTypeService.save(cat);
 		System.out.println("Loading PetTypes....");
+		
+		Specialty radiology = new Specialty();
+		radiology.setDescription("Radiology");
+
+		Specialty surgery = new Specialty();
+		surgery.setDescription("Surgery");
+
+		Specialty dentisty = new Specialty();
+		dentisty.setDescription("Dentisty");
 
 		Owner owner1 = new Owner();
 		owner1.setFirstName("Michael");
